@@ -40,6 +40,7 @@ function Login() {
             <div className="input-container">
                <label>Username </label>
                <input
+                  style={{ borderRadius: "8px", outline: "none" }}
                   onChange={updateData}
                   value={state._username}
                   type="text"
@@ -50,6 +51,7 @@ function Login() {
             <div className="input-container">
                <label>Password </label>
                <input
+                  style={{ borderRadius: "8px", outline: "none" }}
                   onChange={updateData}
                   value={state._password}
                   type="text"
@@ -61,6 +63,7 @@ function Login() {
             <div className="input-container">
                <label>Subdomain </label>
                <input
+                  style={{ borderRadius: "8px", outline: "none" }}
                   onChange={updateData}
                   value={state._subdomain}
                   type="text"
@@ -69,9 +72,12 @@ function Login() {
                />
             </div>
             <div className="button-container">
-               <input type="submit" />
+               <input
+                  style={{ borderRadius: "10px", width: "96%" }}
+                  type="submit"
+                  value={"Kirish"}
+               />
             </div>
-            <ToastContainer />
          </form>
       </div>
    );
@@ -79,7 +85,7 @@ function Login() {
    return (
       <div className="app">
          <div className="login-form">
-            <div className="title">Login</div>
+            <div className="title">Dashboard</div>
             {renderForm}
          </div>
       </div>
