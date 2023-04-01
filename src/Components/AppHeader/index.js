@@ -16,7 +16,10 @@ function AppHeader() {
 
    return (
       <div className="AppHeader">
-         <Typography.Title> OKS Dashboard</Typography.Title>
+         <Typography.Title style={{ cursor: "pointer", textDecoration: "none" }}>
+            {" "}
+            <Link to={"/customers"}>OKS Dashboard</Link>
+         </Typography.Title>
 
          <div style={{ marginRight: "30px" }}>
             {user?.token ? (
