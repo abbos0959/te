@@ -2,48 +2,57 @@ import { Avatar, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import { getInventory, getOrders } from "../../Api";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 function Orders() {
    const [loading, setLoading] = useState(false);
    const [dataSource, setDataSource] = useState([]);
    const { user } = useSelector((state) => state.auth);
 
+   const AllData = async () => {
+      const config = {
+         headers: {
+            Authorization: `Bearer ${user.token}`,
+         },
+      };
+
+      const data = await axios.get(`https://toko.ox-sys.com/variations`, config);
+      setDataSource(data?.data?.items);
+   };
+
    useEffect(() => {
-      setLoading(true);
-      getOrders().then((res) => {
-         setDataSource(res.products);
-         setLoading(false);
-      });
-   }, []);
+      AllData();
+   });
 
    return (
       <Space size={20} direction="vertical">
          <Typography.Title level={4}>All Data</Typography.Title>
          {user?.token ? (
             <Table
+               style={{ width: "1000px" }}
                loading={loading}
                columns={[
                   {
-                     title: "Title",
-                     dataIndex: "title",
+                     title: "name",
+                     dataIndex: "name",
                   },
                   {
-                     title: "Price",
-                     dataIndex: "price",
+                     title: "productName",
+                     dataIndex: "productName",
                      render: (value) => <span>${value}</span>,
                   },
                   {
-                     title: "DiscountedPrice",
-                     dataIndex: "discountedPrice",
+                     title: "supplier",
+                     dataIndex: "supplier",
                      render: (value) => <span>${value}</span>,
                   },
                   {
-                     title: "Quantity",
-                     dataIndex: "quantity",
+                     title: "unit",
+                     dataIndex: "unit",
                   },
                   {
-                     title: "Total",
-                     dataIndex: "total",
+                     title: "description",
+                     dataIndex: "description",
                   },
                ]}
                dataSource={dataSource}

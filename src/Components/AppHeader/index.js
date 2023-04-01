@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setlogout } from "../../redux/authslice";
+import { Button } from "antd";
 
 function AppHeader() {
    useEffect(() => {}, []);
@@ -15,16 +16,36 @@ function AppHeader() {
 
    return (
       <div className="AppHeader">
-         <Typography.Title> Dashboard</Typography.Title>
+         <Typography.Title> OKS Dashboard</Typography.Title>
 
-         <div style={{marginRight:"30px"}}>
-            {" "}
+         <div style={{ marginRight: "30px" }}>
             {user?.token ? (
-               <Link onClick={LogoutUser} to={"/login"} style={{ textDecoration: "none" }}>
+               <Link
+                  onClick={LogoutUser}
+                  to={"/login"}
+                  style={{
+                     textDecoration: "none",
+                     borderRadius: "10px",
+                     padding: "10px",
+                     backgroundColor: "#FF0000",
+                     color: "white",
+                     fontWeight: "bold",
+                  }}
+               >
                   Chiqish
                </Link>
             ) : (
-               <Link to={"/login"} style={{ textDecoration: "none" }}>
+               <Link
+                  to={"/login"}
+                  style={{
+                     textDecoration: "none",
+                     borderRadius: "10px",
+                     padding: "10px",
+                     backgroundColor: "#0000FF",
+                     color: "white",
+                     fontWeight: "bold",
+                  }}
+               >
                   Login
                </Link>
             )}
