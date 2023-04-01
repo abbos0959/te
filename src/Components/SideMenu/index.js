@@ -1,9 +1,4 @@
-import {
-   AppstoreOutlined,
-   ShopOutlined,
-   ShoppingCartOutlined,
-   UserOutlined,
-} from "@ant-design/icons";
+import { ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -24,7 +19,6 @@ function SideMenu() {
             className="SideMenuVertical"
             mode="vertical"
             onClick={(item) => {
-               //item.key
                navigate(item.key);
             }}
             selectedKeys={[selectedKeys]}
@@ -37,7 +31,7 @@ function SideMenu() {
                {
                   label: "Qidiruv",
                   key: "/customers",
-                  icon: <UserOutlined />,
+                  icon: <SearchOutlined />,
                },
             ]}
          ></Menu>

@@ -1,9 +1,9 @@
 import { Avatar, Input, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { getCustomers, getInventory } from "../../Api";
+
 import { useSelector, useDispatch } from "react-redux";
 import { Data } from "../../redux/Dataactions";
-import dataslice from "../../redux/dataslice";
+
 import axios from "axios";
 
 function Customers() {
@@ -104,7 +104,7 @@ function Customers() {
                }}
             ></Table>
          ) : (
-            <h2>Iltimos Avvsl tizimga kiring</h2>
+            <h2>Iltimos Avval tizimga kiring</h2>
          )}
       </Space>
    );

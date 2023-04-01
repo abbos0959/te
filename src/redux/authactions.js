@@ -17,6 +17,7 @@ export const registerUser = createAsyncThunk(
             state,
             config
          );
+
          toast.success("Tizimga kirdingiz", {});
 
          navigate("/customers");

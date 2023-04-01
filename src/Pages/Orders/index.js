@@ -1,6 +1,5 @@
 import { Avatar, Rate, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
-import { getInventory, getOrders } from "../../Api";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
