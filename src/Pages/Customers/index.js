@@ -10,6 +10,7 @@ function Customers() {
    const [loading, setLoading] = useState(false);
    const [search, SetSearch] = useState("");
    const [dataSource, setDataSource] = useState([]);
+   const [filt, setfilt] = useState([]);
    const { user } = useSelector((state) => state.auth);
    const { data } = useSelector((state) => ({ ...state.data }));
    const dispatch = useDispatch();
@@ -23,21 +24,21 @@ function Customers() {
 
       const data = await axios.get(`https://toko.ox-sys.com/variations`, config);
 
-      setDataSource(
-         data?.data?.items?.filter((item) => {
-            return search.toLowerCase() == ""
-               ? item
-               : item.name.toLowerCase().includes(search) ||
-                    item.productName.toLowerCase().includes(search) ||
-                    item.supplier.toLowerCase().includes(search);
-         })
-      );
+      setDataSource(data?.data?.items);
    };
 
    const handlechange = (e) => {
       SetSearch(e.target.value);
       console.log(search);
    };
+
+   const da = dataSource.filter((item) => {
+      return search.toLowerCase() == ""
+         ? item
+         : item.name.toLowerCase().includes(search) ||
+              item.productName.toLowerCase().includes(search) ||
+              item.supplier.toLowerCase().includes(search);
+   });
 
    useEffect(() => {
       // dispatch(Data());
@@ -98,7 +99,7 @@ function Customers() {
                      dataIndex: "description",
                   },
                ]}
-               dataSource={dataSource}
+               dataSource={da}
                pagination={{
                   pageSize: 5,
                }}
